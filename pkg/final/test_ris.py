@@ -1,6 +1,9 @@
+# pylint: disable=E0401
+"""test_ris.py commit"""
+
 from final import Works
 
-ref_ris = """TY  - JOUR
+REF_RIS = """TY  - JOUR
 AU  - John R. Kitchin
 PY  - 2015
 TI  - Examples of Effective Data Sharing in Scientific Publishing
@@ -14,5 +17,6 @@ ER  -"""
 
 
 def test_ris():
-    w = Works("https://doi.org/10.1021/acscatal.5b00538")
-    assert ref_ris == w.ris
+    """test_ris."""
+    work = Works("https://doi.org/10.1021/acscatal.5b00538")
+    assert REF_RIS == work.ris
