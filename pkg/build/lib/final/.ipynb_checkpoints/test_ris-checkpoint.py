@@ -20,4 +20,4 @@ ER  -"""
 def test_ris():
     """test_ris."""
     work = Works("https://doi.org/10.1021/acscatal.5b00538")
-    assert REF_RIS == work.ris_test()
+    assert REF_RIS == work.ris_test().strip()
