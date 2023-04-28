@@ -11,6 +11,6 @@ setup(
     license="MIT",
     packages=["final"],
     scripts=[],
-    entry_points={"console_scripts": ["oa = final.main:main"]},
+    entry_points={"console_scripts": ["oa_final = final.main:main"]},
     long_description="""A set of bibtex utilities""",
 )

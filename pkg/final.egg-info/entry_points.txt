@@ -1,0 +1,3 @@
+[console_scripts]
+oa_final = final.main:main
+

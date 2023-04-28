@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: final
+Version: 0.0.1
+Summary: final utilities
+Home-page: UNKNOWN
+Maintainer: Yi Ying Li
+Maintainer-email: yiyingl4@andrew.cmu.edu
+License: MIT
+Platform: UNKNOWN
+
+A set of bibtex utilities
+

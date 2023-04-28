@@ -1,4 +1,5 @@
 # pylint: disable=E0401
+# pylint: disable=R0801
 """test_ris.py commit"""
 
 from final import Works

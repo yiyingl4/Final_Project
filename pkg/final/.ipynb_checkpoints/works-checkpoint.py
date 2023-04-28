@@ -132,6 +132,33 @@ class Works:
 
         return HTML(uri)
 
+    def ris_test(self):
+        """ris commit"""
+        fields = []
+        if self.data["type"] == "journal-article":
+            fields += ["TY  - JOUR"]
+        else:
+            raise Exception("Unsupported type {self.data['type']}")
+
+        for author in self.data["authorships"]:
+            fields += [f'AU  - {author["author"]["display_name"]}']
+
+        fields += [f'PY  - {self.data["publication_year"]}']
+        fields += [f'TI  - {self.data["title"]}']
+        fields += [f'JO  - {self.data["host_venue"]["display_name"]}']
+        fields += [f'VL  - {self.data["biblio"]["volume"]}']
+
+        if self.data["biblio"]["issue"]:
+            fields += [f'IS  - {self.data["biblio"]["issue"]}']
+
+        fields += [f'SP  - {self.data["biblio"]["first_page"]}']
+        fields += [f'EP  - {self.data["biblio"]["last_page"]}']
+        fields += [f'DO  - {self.data["doi"]}']
+        fields += ["ER  -"]
+
+        ris = "\n".join(fields)
+        return ris
+
     def related_works(self):
         """related_works commit"""
         rworks = []
@@ -143,29 +170,105 @@ class Works:
 
     def bibtex(self):
         """bibtex commit"""
+        # fields = []
+        # if self.data["type"] == "journal-article":
+        #     fields += [
+        #         f'@Article{{{self.data["authorships"][0]["author"]["display_name"]} \
+        #         {self.data["publication_year"]}'
+        #     ]
+        # else:
+        #     raise Exception("Unsupported type {self.data['type']}")
+        # for author in self.data["authorships"]:
+        #     fields += [f'author = {{{author["author"]["display_name"]}}}']
+        # fields += [f'year = {{{self.data["publication_year"]}}}']
+        # fields += [f'title = {{{self.data["title"]}}}']
+        # fields += [f'journal = {{{self.data["host_venue"]["display_name"]}}}']
+        # fields += [f'volume = {{{self.data["biblio"]["volume"]}}}']
+        # if self.data["biblio"]["issue"]:
+        #     fields += [f'number = {{{self.data["biblio"]["issue"]}}}']
+        # fields += [
+        #     f'pages = {{{self.data["biblio"]["first_page"]}-{self.data["biblio"]["last_page"]}}}'
+        # ]
+        # fields += [f'doi = {{{self.data["doi"]}}}']
+        # fields += ["}"]
+        # bibtex = ",\n".join(fields)
+        # print(bibtex)
         fields = []
         if self.data["type"] == "journal-article":
-            fields += [
-                f'@Article{{{self.data["authorships"][0]["author"]["display_name"]}\
-                    {self.data["publication_year"]}'
-            ]
+            author_list = []
+            for author in self.data["authorships"]:
+                author_lastname = author["author"]["display_name"].split()[-1]
+                publication_year = self.data["publication_year"]
+                author_list += [f"{author_lastname}{publication_year},"]
+            fields += ["@article{" + " ".join(author_list)]
         else:
             raise Exception("Unsupported type {self.data['type']}")
         for author in self.data["authorships"]:
-            fields += [f'author = {{{author["author"]["display_name"]}}}']
-        fields += [f'year = {{{self.data["publication_year"]}}}']
-        fields += [f'title = {{{self.data["title"]}}}']
-        fields += [f'journal = {{{self.data["host_venue"]["display_name"]}}}']
-        fields += [f'volume = {{{self.data["biblio"]["volume"]}}}']
+            fields += [f' author = {author["author"]["display_name"]},']
+        fields += [f' year = {self.data["publication_year"]},']
+        fields += [f' title = {self.data["title"]},']
+        fields += [f' journal = {self.data["host_venue"]["display_name"]},']
+        fields += [f' volume = {self.data["biblio"]["volume"]},']
         if self.data["biblio"]["issue"]:
-            fields += [f'number = {{{self.data["biblio"]["issue"]}}}']
+            fields += [f' number = {self.data["biblio"]["issue"]},']
         fields += [
-            f'pages = {{{self.data["biblio"]["first_page"]}-{self.data["biblio"]["last_page"]}}}'
+            f' pages = {self.data["biblio"]["first_page"]}- \
+        {self.data["biblio"]["last_page"]},'
         ]
-        fields += [f'doi = {{{self.data["doi"]}}}']
+        fields += [f' doi = {self.data["doi"]}']
         fields += ["}"]
-        bibtex = ",\n".join(fields)
+        bibtex = "\n".join(fields)
         print(bibtex)
+
+    def bibtex_test(self):
+        """bibtex commit"""
+        # fields = []
+        # if self.data["type"] == "journal-article":
+        #     fields += [
+        #         f'@Article{{{self.data["authorships"][0]["author"]["display_name"]}\
+        #             {self.data["publication_year"]}'
+        #     ]
+        # else:
+        #     raise Exception("Unsupported type {self.data['type']}")
+        # for author in self.data["authorships"]:
+        #     fields += [f'author = {{{author["author"]["display_name"]}}}']
+        # fields += [f'year = {{{self.data["publication_year"]}}}']
+        # fields += [f'title = {{{self.data["title"]}}}']
+        # fields += [f'journal = {{{self.data["host_venue"]["display_name"]}}}']
+        # fields += [f'volume = {{{self.data["biblio"]["volume"]}}}']
+        # if self.data["biblio"]["issue"]:
+        #     fields += [f'number = {{{self.data["biblio"]["issue"]}}}']
+        # fields += [
+        #     f'pages = {{{self.data["biblio"]["first_page"]}-{self.data["biblio"]["last_page"]}}}'
+        # ]
+        # fields += [f'doi = {{{self.data["doi"]}}}']
+        # fields += ["}"]
+        # bibtex = ",\n".join(fields)
+        fields = []
+        if self.data["type"] == "journal-article":
+            author_list = []
+            for author in self.data["authorships"]:
+                author_lastname = author["author"]["display_name"].split()[-1]
+                publication_year = self.data["publication_year"]
+                author_list += [f"{author_lastname}{publication_year},"]
+            fields += ["@article{" + " ".join(author_list)]
+        else:
+            raise Exception("Unsupported type {self.data['type']}")
+        for author in self.data["authorships"]:
+            fields += [f' author = {author["author"]["display_name"]},']
+        fields += [f' year = {self.data["publication_year"]},']
+        fields += [f' title = {self.data["title"]},']
+        fields += [f' journal = {self.data["host_venue"]["display_name"]},']
+        fields += [f' volume = {self.data["biblio"]["volume"]},']
+        if self.data["biblio"]["issue"]:
+            fields += [f' number = {self.data["biblio"]["issue"]},']
+        fields += [
+            f' pages = {self.data["biblio"]["first_page"]}-{self.data["biblio"]["last_page"]},'
+        ]
+        fields += [f' doi = {self.data["doi"]}']
+        fields += ["}"]
+        bibtex = "\n".join(fields)
+        return bibtex
 
     def references(self):
         """references commit"""

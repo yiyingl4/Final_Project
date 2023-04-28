@@ -1,0 +1,11 @@
+setup.py
+final/__init__.py
+final/main.py
+final/test_bibtex.py
+final/test_ris.py
+final/works.py
+final.egg-info/PKG-INFO
+final.egg-info/SOURCES.txt
+final.egg-info/dependency_links.txt
+final.egg-info/entry_points.txt
+final.egg-info/top_level.txt
