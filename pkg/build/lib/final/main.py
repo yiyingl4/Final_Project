@@ -1,5 +1,4 @@
 # pylint: disable=E0401
-# pylint: disable=R0801
 """main"""
 import click
 from .works import Works

@@ -12,6 +12,6 @@ def main(website, bibtex, ris):
     """main"""
     w_work = Works(website)
     if ris:
-        w_work.ris_test()
+        w_work.ris()
     if bibtex:
         w_work.bibtex()
