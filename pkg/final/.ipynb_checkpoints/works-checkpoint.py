@@ -170,29 +170,6 @@ class Works:
 
     def bibtex(self):
         """bibtex commit"""
-        # fields = []
-        # if self.data["type"] == "journal-article":
-        #     fields += [
-        #         f'@Article{{{self.data["authorships"][0]["author"]["display_name"]} \
-        #         {self.data["publication_year"]}'
-        #     ]
-        # else:
-        #     raise Exception("Unsupported type {self.data['type']}")
-        # for author in self.data["authorships"]:
-        #     fields += [f'author = {{{author["author"]["display_name"]}}}']
-        # fields += [f'year = {{{self.data["publication_year"]}}}']
-        # fields += [f'title = {{{self.data["title"]}}}']
-        # fields += [f'journal = {{{self.data["host_venue"]["display_name"]}}}']
-        # fields += [f'volume = {{{self.data["biblio"]["volume"]}}}']
-        # if self.data["biblio"]["issue"]:
-        #     fields += [f'number = {{{self.data["biblio"]["issue"]}}}']
-        # fields += [
-        #     f'pages = {{{self.data["biblio"]["first_page"]}-{self.data["biblio"]["last_page"]}}}'
-        # ]
-        # fields += [f'doi = {{{self.data["doi"]}}}']
-        # fields += ["}"]
-        # bibtex = ",\n".join(fields)
-        # print(bibtex)
         fields = []
         if self.data["type"] == "journal-article":
             author_list = []
@@ -222,28 +199,6 @@ class Works:
 
     def bibtex_test(self):
         """bibtex commit"""
-        # fields = []
-        # if self.data["type"] == "journal-article":
-        #     fields += [
-        #         f'@Article{{{self.data["authorships"][0]["author"]["display_name"]}\
-        #             {self.data["publication_year"]}'
-        #     ]
-        # else:
-        #     raise Exception("Unsupported type {self.data['type']}")
-        # for author in self.data["authorships"]:
-        #     fields += [f'author = {{{author["author"]["display_name"]}}}']
-        # fields += [f'year = {{{self.data["publication_year"]}}}']
-        # fields += [f'title = {{{self.data["title"]}}}']
-        # fields += [f'journal = {{{self.data["host_venue"]["display_name"]}}}']
-        # fields += [f'volume = {{{self.data["biblio"]["volume"]}}}']
-        # if self.data["biblio"]["issue"]:
-        #     fields += [f'number = {{{self.data["biblio"]["issue"]}}}']
-        # fields += [
-        #     f'pages = {{{self.data["biblio"]["first_page"]}-{self.data["biblio"]["last_page"]}}}'
-        # ]
-        # fields += [f'doi = {{{self.data["doi"]}}}']
-        # fields += ["}"]
-        # bibtex = ",\n".join(fields)
         fields = []
         if self.data["type"] == "journal-article":
             author_list = []
